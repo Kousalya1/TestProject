@@ -30,7 +30,7 @@ Feature: In order to remember the things I want to do, as a ToDo MVC user, I wan
     When click All
     And complete the "Todo3"
     Then verify "Todo3" got completed
-    Then verify "Todo3" is moved to Completed list
+    And verify "Todo3" is moved to Completed list
     And verify nothing is in Active list
     And verify the total number of items left is 0
 
@@ -40,7 +40,7 @@ Feature: In order to remember the things I want to do, as a ToDo MVC user, I wan
     When I add "Todo1, Todo2, Todo3"
     And complete all the todos using Toggle all
     Then verify 3 items are in Completed list
-    Then verify "Todo1, Todo2, Todo3" are in Completed List
+    And verify "Todo1, Todo2, Todo3" are in Completed List
     When click Clear completed
     Then all items should get cleared
 
@@ -48,9 +48,9 @@ Feature: In order to remember the things I want to do, as a ToDo MVC user, I wan
   @Test3
   Scenario: Edit Todo
     When I add "Todo1"
-    And edit active "Todo1" as "Todo1ActiveEdited" and verify
+    Then edit active "Todo1" as "Todo1ActiveEdited" and verify
     And complete the "Todo1ActiveEdited"
-    When edit completed "Todo1ActiveEdited" as "Todo1CompletedEdited" and verify
+    And edit completed "Todo1ActiveEdited" as "Todo1CompletedEdited" and verify
 
 
   @Test4
@@ -72,7 +72,4 @@ Feature: In order to remember the things I want to do, as a ToDo MVC user, I wan
     When I add "Todo1, Todo2"
     Then delete "Todo1" and verify
     And delete "Todo2" and verify
-
-
-
-
+    
