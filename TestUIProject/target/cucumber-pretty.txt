@@ -1,0 +1,163 @@
+@TEST
+Feature: In order to remember the things I want to do, as a ToDo MVC user, I want to manage my todo list
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+
+  @Test1
+  Scenario: Add Todos and Complete one by one              [90m# TestFeature.feature:9[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1, Todo2, Todo3[0m[32m"[0m                       [90m# Steps.i_add(String)[0m
+    [32mAnd [0m[32mverify the total number of items left is [0m[32m[1m3[0m         [90m# Steps.verify_the_total_number_of_items_left_is(int)[0m
+    [32mThen [0m[32mverify all the [0m[32m[1m3[0m[32m items are in All and Active list[0m [90m# Steps.verify_all_the_items_are_in_All_and_Active_list(int)[0m
+    [32mWhen [0m[32mclick All[0m                                         [90m# Steps.click_All()[0m
+    [32mAnd [0m[32mcomplete the "[0m[32m[1mTodo1[0m[32m"[0m                               [90m# Steps.complete_the(String)[0m
+    [32mThen [0m[32mverify "[0m[32m[1mTodo1[0m[32m" got completed[0m                      [90m# Steps.verify_got_completed(String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo2[0m[32m" and "[0m[32m[1mTodo3[0m[32m" are not completed[0m       [90m# Steps.verify_and_are_not_completed(String,String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo1[0m[32m" is moved to Completed list[0m          [90m# Steps.verify_is_moved_to_Completed_list(String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo2[0m[32m" and "[0m[32m[1mTodo3[0m[32m" are in Active list[0m      [90m# Steps.verify_and_are_in_Active_list(String,String)[0m
+    [32mAnd [0m[32mverify the total number of items left is [0m[32m[1m2[0m         [90m# Steps.verify_the_total_number_of_items_left_is(int)[0m
+    [32mWhen [0m[32mclick All[0m                                         [90m# Steps.click_All()[0m
+    [32mAnd [0m[32mcomplete the "[0m[32m[1mTodo2[0m[32m"[0m                               [90m# Steps.complete_the(String)[0m
+    [32mThen [0m[32mverify "[0m[32m[1mTodo2[0m[32m" got completed[0m                      [90m# Steps.verify_got_completed(String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo3[0m[32m" is not completed[0m                    [90m# Steps.verify_is_not_completed(String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo2[0m[32m" is moved to Completed list[0m          [90m# Steps.verify_is_moved_to_Completed_list(String)[0m
+    [32mAnd [0m[32mverify "[0m[32m[1mTodo3[0m[32m" is in Active list[0m                   [90m# Steps.verify_is_in_Active_list(String)[0m
+    [32mAnd [0m[32mverify the total number of items left is [0m[32m[1m1[0m         [90m# Steps.verify_the_total_number_of_items_left_is(int)[0m
+    [32mWhen [0m[32mclick All[0m                                         [90m# Steps.click_All()[0m
+    [32mAnd [0m[32mcomplete the "[0m[32m[1mTodo3[0m[32m"[0m                               [90m# Steps.complete_the(String)[0m
+    [32mThen [0m[32mverify "[0m[32m[1mTodo3[0m[32m" got completed[0m                      [90m# Steps.verify_got_completed(String)[0m
+    [32mThen [0m[32mverify "[0m[32m[1mTodo3[0m[32m" is moved to Completed list[0m         [90m# Steps.verify_is_moved_to_Completed_list(String)[0m
+    [32mAnd [0m[32mverify nothing is in Active list[0m                   [90m# Steps.verify_nothing_is_in_Active_list()[0m
+    [32mAnd [0m[32mverify the total number of items left is [0m[32m[1m0[0m         [90m# Steps.verify_the_total_number_of_items_left_is(int)[0m
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+
+  @Test2
+  Scenario: Complete todos by clicking Toggle all and then Clear Completed [90m# TestFeature.feature:39[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1, Todo2, Todo3[0m[32m"[0m                                       [90m# Steps.i_add(String)[0m
+    [32mAnd [0m[32mcomplete all the todos using Toggle all[0m                            [90m# Steps.complete_all_the_todos_using_Toggle_all()[0m
+    [32mThen [0m[32mverify [0m[32m[1m3[0m[32m items are in Completed list[0m                              [90m# Steps.verify_all_the_items_are_in_Completed_list(int)[0m
+    [32mThen [0m[32mverify "[0m[32m[1mTodo1, Todo2, Todo3[0m[32m" are in Completed List[0m                [90m# Steps.verify_are_in_Completed_List(String)[0m
+    [32mWhen [0m[32mclick Clear completed[0m                                             [90m# Steps.click_Clear_completed()[0m
+    [32mThen [0m[32mall items should get cleared[0m                                      [90m# Steps.all_items_should_get_cleared()[0m
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+
+  @Test3
+  Scenario: Edit Todo                                                            [90m# TestFeature.feature:49[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1[0m[32m"[0m                                                           [90m# Steps.i_add(String)[0m
+    [32mAnd [0m[32medit active "[0m[32m[1mTodo1[0m[32m" as "[0m[32m[1mTodo1ActiveEdited[0m[32m" and verify[0m                    [90m# Steps.edit_active_as_and_verify(String,String)[0m
+    [32mAnd [0m[32mcomplete the "[0m[32m[1mTodo1ActiveEdited[0m[32m"[0m                                         [90m# Steps.complete_the(String)[0m
+    [32mWhen [0m[32medit completed "[0m[32m[1mTodo1ActiveEdited[0m[32m" as "[0m[32m[1mTodo1CompletedEdited[0m[32m" and verify[0m [90m# Steps.edit_completed_as_and_verify(String,String)[0m
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+
+  @Test4
+  Scenario: Verify Title/Placeholder/labels                     [90m# TestFeature.feature:57[0m
+    [32mThen [0m[32mverify the title of the todos page is "[0m[32m[1mtodos[0m[32m"[0m          [90m# Steps.verify_the_title_of_the_todos_page_is(String)[0m
+    [32mAnd [0m[32mverify the placeholder-What needs to be done is present[0m [90m# Steps.verify_the_placeholder_What_needs_to_be_done_is_present()[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1[0m[32m"[0m                                          [90m# Steps.i_add(String)[0m
+    [32mThen [0m[32mverify the labels All, Active, Completed, 1 item left[0m  [90m# Steps.verify_the_labels_All_Active_Completed_1_item_left()[0m
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+[31mFailure in after hook:[0m[31mSteps.after()[0m
+[31mMessage: [0m[31mjava.lang.AssertionError: The following asserts failed:
+FAIL: Actual and Expected number of Todos count is not equal, duplicate todos may be added.
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:37)
+	at StepDefinitions.Steps.after(Steps.java:215)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
+	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:222)
+	at cucumber.runtime.Runtime.runHooks(Runtime.java:210)
+	at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:204)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:50)
+	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:91)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:93)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:37)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.api.junit.Cucumber.run(Cucumber.java:98)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+[0m
+      [31mjava.lang.AssertionError: The following asserts failed:
+      FAIL: Actual and Expected number of Todos count is not equal, duplicate todos may be added.
+      	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:37)
+      	at StepDefinitions.Steps.after(Steps.java:215)
+      	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+      	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+      	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+      	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+      	at cucumber.runtime.Utils$1.call(Utils.java:37)
+      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+      	at cucumber.runtime.Utils.invoke(Utils.java:31)
+      	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:59)
+      	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:222)
+      	at cucumber.runtime.Runtime.runHooks(Runtime.java:210)
+      	at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:204)
+      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:50)
+      	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:91)
+      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
+      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+      	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
+      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:93)
+      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:37)
+      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+      	at cucumber.api.junit.Cucumber.run(Cucumber.java:98)
+      	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+      	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+      	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+      	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+      	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+      [0m
+
+  @Test5
+  Scenario: Add duplicate Todos                                     [90m# TestFeature.feature:65[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1, Todo1, Todo1[0m[32m"[0m                                [90m# Steps.i_add(String)[0m
+    [32mThen [0m[32mverify duplicate todos can not be added and the count is [0m[32m[1m1[0m [90m# Steps.verifyDuplicateTodosCanNotBeAddedAndTheCountIs(int)[0m
+
+  Background:                      [90m# TestFeature.feature:4[0m
+    [32mGiven [0m[32mI launch application url[0m [90m# Steps.i_launch_application_url()[0m
+
+  @Test6
+  Scenario: Delete Todos           [90m# TestFeature.feature:71[0m
+    [32mWhen [0m[32mI add "[0m[32m[1mTodo1, Todo2[0m[32m"[0m      [90m# Steps.i_add(String)[0m
+    [32mThen [0m[32mdelete "[0m[32m[1mTodo1[0m[32m" and verify[0m [90m# Steps.delete(String)[0m
+    [32mAnd [0m[32mdelete "[0m[32m[1mTodo2[0m[32m" and verify[0m  [90m# Steps.delete(String)[0m
